@@ -1,138 +1,714 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>Koala Nest Life合同会社</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koala Nest Life合同会社</title>
+  <meta name="description" content="Koala Nest Life合同会社は、グループホーム事業を中心に、不動産賃貸業、コンテンツ販売業を通じて、地域に根差したあたたかな生活サポートを提供しています。" />
+  <style>
+    :root {
+      --bg: #f7f4ed;
+      --bg-soft: #fffdf8;
+      --line: #e7dfd1;
+      --text: #3a352d;
+      --muted: #746b60;
+      --green: #7da37d;
+      --green-dark: #5f855f;
+      --accent: #efe6d2;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(78, 63, 42, 0.08);
+      --radius: 24px;
+    }
 
-body{
-font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-margin:0;
-background:#f7f6f2;
-color:#333;
-}
+    * { box-sizing: border-box; }
 
-header{
-background:white;
-padding:20px;
-border-bottom:1px solid #ddd;
-}
+    html { scroll-behavior: smooth; }
 
-.container{
-max-width:1000px;
-margin:auto;
-padding:20px;
-}
+    body {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
 
-.hero{
-background:#eaf4ea;
-padding:60px 20px;
-text-align:center;
-}
+    img { max-width: 100%; display: block; }
 
-.hero h1{
-font-size:40px;
-margin-bottom:10px;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.section{
-padding:60px 0;
-}
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-.box{
-background:white;
-padding:25px;
-border-radius:10px;
-margin-bottom:20px;
-box-shadow:0 3px 8px rgba(0,0,0,0.05);
-}
+    .section {
+      padding: 84px 0;
+    }
 
-footer{
-background:#222;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
-}
+    .section-title {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
 
-</style>
+    .section-lead {
+      margin: 0 0 36px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eef5ea;
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(231, 223, 209, 0.9);
+      background: rgba(247, 244, 237, 0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 76px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav a:hover { color: var(--green-dark); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(193, 221, 193, 0.65), transparent 30%),
+        radial-gradient(circle at 90% 85%, rgba(255, 228, 179, 0.45), transparent 28%),
+        linear-gradient(180deg, #fbf8f1 0%, #f3eee3 100%);
+      padding: 96px 0 88px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(36px, 5.5vw, 64px);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .hero p {
+      margin: 24px 0 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--green-dark);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover { opacity: 0.92; }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.85);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover {
+      background: var(--white);
+    }
+
+    .hero-card-wrap {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-card,
+    .card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(231, 223, 209, 0.95);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 28px;
+    }
+
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.5;
+    }
+
+    .hero-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .hero-mini {
+      padding: 22px;
+      min-height: 130px;
+    }
+
+    .hero-mini dt,
+    .company-table dt {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .hero-mini dd,
+    .company-table dd {
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .message-grid,
+    .company-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .message-card,
+    .company-card,
+    .contact-card {
+      padding: 32px;
+    }
+
+    .message-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #f2f7f0;
+      border: 1px solid #dce8d7;
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card,
+    .support-card,
+    .flow-card {
+      padding: 28px;
+    }
+
+    .service-card h3,
+    .support-card h3,
+    .flow-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    .service-card p,
+    .support-card p,
+    .flow-card p,
+    .company-card p,
+    .message-card p,
+    .contact-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .flow-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 82px;
+      height: 34px;
+      border-radius: 999px;
+      background: #eef5ea;
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .alt-section {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .company-table {
+      display: grid;
+      gap: 18px;
+    }
+
+    .company-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #efe8dc;
+    }
+
+    .company-row:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .contact-section {
+      background: linear-gradient(180deg, #4b4a42 0%, #2f2d28 100%);
+      color: var(--white);
+    }
+
+    .contact-section .section-lead,
+    .contact-card p,
+    .contact-card a,
+    .contact-meta dt {
+      color: rgba(255,255,255,0.82);
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: none;
+    }
+
+    .contact-meta {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-meta dl {
+      margin: 0;
+    }
+
+    .contact-meta dt {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .contact-meta dd {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: #2f2d28;
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.35);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    footer {
+      padding: 26px 0;
+      background: #262420;
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .message-grid,
+      .company-grid,
+      .contact-grid,
+      .services,
+      .support-grid,
+      .flow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 68px 0; }
+      .hero { padding: 72px 0 64px; }
+      .header-inner { min-height: 68px; }
+      .logo { font-size: 20px; }
+      .hero-card,
+      .card,
+      .message-card,
+      .company-card,
+      .contact-card,
+      .service-card,
+      .support-card,
+      .flow-card { padding: 24px; }
+      .company-row { grid-template-columns: 1fr; gap: 6px; }
+      .contact-meta dd { font-size: 16px; }
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <div class="container header-inner">
+      <div>
+        <div class="logo">Koala Nest Life合同会社</div>
+        <div class="logo-sub">暮らしと地域に根差した、あたたかな生活サポート</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#message">私たちについて</a></li>
+          <li><a href="#services">事業内容</a></li>
+          <li><a href="#support">支援内容</a></li>
+          <li><a href="#flow">ご利用の流れ</a></li>
+          <li><a href="#company">会社概要</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<header>
-<div class="container">
-<h2>Koala Nest Life合同会社</h2>
-</div>
-</header>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">KOALA NEST LIFE</span>
+          <h1>その人らしい毎日を、<br>あたたかく支える場所へ。</h1>
+          <p>
+            Koala Nest Life合同会社は、グループホーム事業を中心に、不動産賃貸業、コンテンツ販売業を通じて、
+            地域に寄り添う暮らしの支援を行っています。安心して過ごせる日常を大切にしながら、継続的なサポートを目指します。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">お問い合わせ</a>
+            <a class="btn btn-secondary" href="#company">会社概要を見る</a>
+          </div>
+        </div>
 
-<div class="hero">
-<h1>暮らしに寄り添う、あたたかな生活サポート</h1>
-<p>地域に根差した安心できる暮らしを支えます</p>
-</div>
+        <div class="hero-card-wrap">
+          <div class="hero-card">
+            <h2>グループホーム事業を中心に、<br>暮らしの土台を支える事業を展開</h2>
+            <p>住まい・地域・生活支援のつながりを大切にした、やわらかく安心感のある運営を目指しています。</p>
+          </div>
+          <div class="hero-mini-grid">
+            <dl class="hero-card hero-mini">
+              <dt>所在地</dt>
+              <dd>東京都文京区本郷2丁目15-1</dd>
+            </dl>
+            <dl class="hero-card hero-mini">
+              <dt>代表者</dt>
+              <dd>井上裕太</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="container">
+    <section id="message" class="section">
+      <div class="container message-grid">
+        <div>
+          <span class="eyebrow">MESSAGE</span>
+          <h2 class="section-title">暮らしに寄り添い、地域の中で安心して過ごせる毎日を支えます</h2>
+          <p class="section-lead">
+            私たちが大切にしているのは、単に住まいを提供することではなく、その人らしい生活を続けていくための土台を整えることです。
+            日々の小さな安心の積み重ねが、穏やかな暮らしにつながると考えています。
+          </p>
+          <p class="section-lead">
+            Koala Nest Life合同会社は、利用者の方、ご家族、関係機関の皆さまと丁寧に向き合いながら、
+            地域の中で無理なく続けられる生活サポートを目指しています。
+          </p>
+        </div>
+        <div class="card message-card">
+          <h3 style="margin-top:0; font-size:24px;">私たちが大切にしていること</h3>
+          <div class="message-tags">
+            <span class="tag">あたたかさ</span>
+            <span class="tag">安心感</span>
+            <span class="tag">地域とのつながり</span>
+            <span class="tag">生活サポート</span>
+            <span class="tag">継続的な支援</span>
+          </div>
+          <p class="note">正式な事業名：グループホーム事業</p>
+        </div>
+      </div>
+    </section>
 
-<div class="section">
-<h2>事業内容</h2>
+    <section id="services" class="section alt-section">
+      <div class="container">
+        <span class="eyebrow">SERVICES</span>
+        <h2 class="section-title">事業内容</h2>
+        <p class="section-lead">地域の暮らしに寄り添う複数の事業を通じて、生活の基盤づくりに取り組んでいます。</p>
+        <div class="services">
+          <div class="card service-card">
+            <h3>グループホーム事業</h3>
+            <p>安心して暮らせる住環境を整え、日常生活をあたたかく支えることを大切にしています。</p>
+          </div>
+          <div class="card service-card">
+            <h3>不動産賃貸業</h3>
+            <p>地域に根差した住環境の提供を通じて、落ち着いて暮らせる基盤づくりに取り組みます。</p>
+          </div>
+          <div class="card service-card">
+            <h3>コンテンツ販売業</h3>
+            <p>日々の生活や価値観に寄り添うコンテンツを企画・販売し、小さな豊かさを届けます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="box">
-<h3>グループホーム事業</h3>
-<p>安心して暮らせる住環境を提供し、日常生活をサポートします。</p>
-</div>
+    <section id="support" class="section">
+      <div class="container">
+        <span class="eyebrow">SUPPORT</span>
+        <h2 class="section-title">生活を支える主なサポート</h2>
+        <p class="section-lead">グループホームでの暮らしにおいて、日常の安心と継続しやすい生活環境を大切にしています。</p>
+        <div class="support-grid">
+          <div class="card support-card">
+            <h3>食事</h3>
+            <p>毎日の生活リズムを整えるため、安心して続けられる食のサポートを行います。</p>
+          </div>
+          <div class="card support-card">
+            <h3>家事・生活支援</h3>
+            <p>掃除、洗濯、身の回りのことなど、日常生活に必要な支援を丁寧に行います。</p>
+          </div>
+          <div class="card support-card">
+            <h3>見守り</h3>
+            <p>日々の体調や生活状況に目を配り、落ち着いて過ごせる環境づくりを大切にしています。</p>
+          </div>
+          <div class="card support-card">
+            <h3>相談対応</h3>
+            <p>不安や悩みを一人で抱え込まないよう、日常の相談を受け止めながら支援します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="box">
-<h3>不動産賃貸業</h3>
-<p>地域に根差した住環境の提供を行っています。</p>
-</div>
+    <section id="flow" class="section alt-section">
+      <div class="container">
+        <span class="eyebrow">FLOW</span>
+        <h2 class="section-title">ご利用の流れ</h2>
+        <p class="section-lead">お問い合わせからご入居後の生活開始まで、段階を踏んで丁寧にご案内します。</p>
+        <div class="flow-grid">
+          <div class="card flow-card">
+            <div class="flow-step">STEP 01</div>
+            <h3>お問い合わせ</h3>
+            <p>ご本人、ご家族、支援機関の方からのご相談を受け付けています。</p>
+          </div>
+          <div class="card flow-card">
+            <div class="flow-step">STEP 02</div>
+            <h3>ご見学・ご相談</h3>
+            <p>実際の雰囲気をご覧いただきながら、生活面のご希望を丁寧に伺います。</p>
+          </div>
+          <div class="card flow-card">
+            <div class="flow-step">STEP 03</div>
+            <h3>ご利用準備</h3>
+            <p>必要事項を確認し、安心して生活を始められるよう準備を進めます。</p>
+          </div>
+          <div class="card flow-card">
+            <div class="flow-step">STEP 04</div>
+            <h3>ご入居</h3>
+            <p>新しい生活のスタート後も、継続して日々の支援を行っていきます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="box">
-<h3>コンテンツ販売業</h3>
-<p>暮らしに役立つコンテンツの企画・販売を行っています。</p>
-</div>
+    <section id="company" class="section">
+      <div class="container company-grid">
+        <div>
+          <span class="eyebrow">COMPANY</span>
+          <h2 class="section-title">会社概要</h2>
+          <p class="section-lead">
+            Koala Nest Life合同会社は、地域に根差した暮らしのサポートを目指し、グループホーム事業を中心に事業を展開しています。
+            安心して生活を送るための住環境づくりと、継続的な支援の両面から、日常に寄り添う会社でありたいと考えています。
+          </p>
+        </div>
+        <div class="card company-card">
+          <div class="company-table">
+            <div class="company-row">
+              <dt>会社名</dt>
+              <dd>Koala Nest Life合同会社</dd>
+            </div>
+            <div class="company-row">
+              <dt>所在地</dt>
+              <dd>東京都文京区本郷2丁目15-1</dd>
+            </div>
+            <div class="company-row">
+              <dt>代表者</dt>
+              <dd>井上裕太</dd>
+            </div>
+            <div class="company-row">
+              <dt>正式な事業名</dt>
+              <dd>グループホーム事業</dd>
+            </div>
+            <div class="company-row">
+              <dt>事業内容</dt>
+              <dd>グループホーム業、不動産賃貸業、コンテンツ販売業</dd>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section id="contact" class="section contact-section">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow" style="background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.92);">CONTACT</span>
+          <h2 class="section-title">お問い合わせ</h2>
+          <p class="section-lead">
+            ご相談やご見学に関するお問い合わせは、お電話またはメールにてお気軽にご連絡ください。
+            利用をご検討されている方、ご家族の方、支援機関の方からのご相談も受け付けています。
+          </p>
+        </div>
+        <div class="card contact-card">
+          <div class="contact-meta">
+            <dl>
+              <dt>会社名</dt>
+              <dd>Koala Nest Life合同会社</dd>
+            </dl>
+            <dl>
+              <dt>電話番号</dt>
+              <dd><a href="tel:09096208023">090-9620-8023</a></dd>
+            </dl>
+            <dl>
+              <dt>メールアドレス</dt>
+              <dd><a href="mailto:yutainoue377@gmail.com">yutainoue377@gmail.com</a></dd>
+            </dl>
+            <dl>
+              <dt>所在地</dt>
+              <dd>東京都文京区本郷2丁目15-1</dd>
+            </dl>
+          </div>
+          <div class="contact-buttons">
+            <a class="btn btn-light" href="tel:09096208023">電話で問い合わせる</a>
+            <a class="btn btn-outline" href="mailto:yutainoue377@gmail.com">メールで問い合わせる</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<div class="section">
-<h2>会社概要</h2>
-
-<div class="box">
-<p><b>会社名</b><br>
-Koala Nest Life合同会社</p>
-
-<p><b>所在地</b><br>
-東京都文京区本郷2丁目15-1</p>
-
-<p><b>代表者</b><br>
-井上裕太</p>
-
-<p><b>正式な事業名</b><br>
-グループホーム事業</p>
-
-<p><b>事業内容</b><br>
-グループホーム業、不動産賃貸業、コンテンツ販売業</p>
-</div>
-
-</div>
-
-<div class="section">
-<h2>お問い合わせ</h2>
-
-<div class="box">
-<p><b>電話番号</b><br>
-090-9620-8023</p>
-
-<p><b>メール</b><br>
-yutainoue377@gmail.com</p>
-</div>
-
-</div>
-
-</div>
-
-<footer>
-© Koala Nest Life合同会社
-</footer>
-
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Koala Nest Life合同会社. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#company">会社概要</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
