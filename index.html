@@ -16,14 +16,12 @@
       --green-dark: #5f855f;
       --accent: #efe6d2;
       --white: #ffffff;
-      --shadow: 0 10px 30px rgba(78, 63, 42, 0.08);
+      --shadow: 0 12px 34px rgba(78, 63, 42, 0.08);
       --radius: 24px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
@@ -33,32 +31,18 @@
     }
 
     img { max-width: 100%; display: block; }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
-      width: min(1100px, calc(100% - 32px));
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .section {
-      padding: 84px 0;
-    }
-
-    .section-title {
-      margin: 0 0 12px;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.3;
-      letter-spacing: 0.02em;
-    }
-
-    .section-lead {
-      margin: 0 0 36px;
-      color: var(--muted);
-      font-size: 16px;
+    .section { padding: 88px 0; }
+    .alt-section {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .eyebrow {
@@ -71,6 +55,19 @@
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.12em;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
+
+    .section-lead {
+      margin: 0 0 34px;
+      color: var(--muted);
+      font-size: 16px;
     }
 
     header {
@@ -162,6 +159,8 @@
       font-weight: 700;
       transition: 0.2s ease;
       border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 15px;
     }
 
     .btn-primary {
@@ -177,26 +176,19 @@
       border-color: var(--line);
     }
 
-    .btn-secondary:hover {
-      background: var(--white);
-    }
+    .btn-secondary:hover { background: var(--white); }
 
-    .hero-card-wrap {
-      display: grid;
-      gap: 16px;
-    }
+    .hero-card-wrap { display: grid; gap: 16px; }
 
     .hero-card,
     .card {
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.84);
       border: 1px solid rgba(231, 223, 209, 0.95);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .hero-card {
-      padding: 28px;
-    }
+    .hero-card { padding: 28px; }
 
     .hero-card h2 {
       margin: 0 0 10px;
@@ -216,14 +208,16 @@
     }
 
     .hero-mini dt,
-    .company-table dt {
+    .company-table dt,
+    .contact-meta dt {
       color: var(--muted);
       font-size: 13px;
       margin-bottom: 8px;
     }
 
     .hero-mini dd,
-    .company-table dd {
+    .company-table dd,
+    .contact-meta dd {
       margin: 0;
       font-weight: 700;
       line-height: 1.7;
@@ -231,7 +225,10 @@
 
     .message-grid,
     .company-grid,
-    .contact-grid {
+    .contact-grid,
+    .gallery-grid,
+    .map-grid,
+    .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 28px;
@@ -240,7 +237,10 @@
 
     .message-card,
     .company-card,
-    .contact-card {
+    .contact-card,
+    .gallery-card,
+    .map-card,
+    .form-card {
       padding: 32px;
     }
 
@@ -261,21 +261,27 @@
       font-weight: 700;
     }
 
-    .services {
+    .services,
+    .support-grid,
+    .flow-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 22px;
     }
 
+    .services { grid-template-columns: repeat(3, 1fr); }
+    .support-grid { grid-template-columns: repeat(2, 1fr); }
+    .flow-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+
     .service-card,
     .support-card,
-    .flow-card {
-      padding: 28px;
-    }
+    .flow-card { padding: 28px; }
 
     .service-card h3,
     .support-card h3,
-    .flow-card h3 {
+    .flow-card h3,
+    .gallery-card h3,
+    .map-card h3,
+    .form-card h3 {
       margin: 0 0 12px;
       font-size: 22px;
       line-height: 1.5;
@@ -286,21 +292,12 @@
     .flow-card p,
     .company-card p,
     .message-card p,
-    .contact-card p {
+    .contact-card p,
+    .gallery-card p,
+    .map-card p,
+    .form-card p {
       margin: 0;
       color: var(--muted);
-    }
-
-    .support-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
     }
 
     .flow-step {
@@ -317,16 +314,79 @@
       margin-bottom: 16px;
     }
 
-    .alt-section {
-      background: var(--bg-soft);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .gallery-stack {
+      display: grid;
+      gap: 16px;
     }
 
-    .company-table {
-      display: grid;
-      gap: 18px;
+    .gallery-main {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, #e6efe3, #f4efe3);
+      border: 1px solid var(--line);
+      position: relative;
     }
+
+    .gallery-main img,
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      background: rgba(255,255,255,0.88);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      border: 1px solid rgba(231,223,209,0.95);
+    }
+
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-thumb {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ece6da, #e2eddc);
+      border: 1px solid var(--line);
+      position: relative;
+    }
+
+    .placeholder-label {
+      position: absolute;
+      inset: auto 10px 10px 10px;
+      background: rgba(255,255,255,0.86);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      text-align: center;
+      border: 1px solid rgba(231,223,209,0.95);
+      color: var(--muted);
+    }
+
+    .upload-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: #f7fbf5;
+      border: 1px solid #dce8d7;
+      color: var(--green-dark);
+      font-size: 14px;
+    }
+
+    .company-table,
+    .contact-meta { display: grid; gap: 18px; }
 
     .company-row {
       display: grid;
@@ -341,6 +401,15 @@
       border-bottom: none;
     }
 
+    .map-embed {
+      width: 100%;
+      min-height: 380px;
+      border: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
     .contact-section {
       background: linear-gradient(180deg, #4b4a42 0%, #2f2d28 100%);
       color: var(--white);
@@ -349,7 +418,8 @@
     .contact-section .section-lead,
     .contact-card p,
     .contact-card a,
-    .contact-meta dt {
+    .contact-meta dt,
+    .map-dark-note {
       color: rgba(255,255,255,0.82);
     }
 
@@ -357,27 +427,6 @@
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: none;
-    }
-
-    .contact-meta {
-      display: grid;
-      gap: 18px;
-    }
-
-    .contact-meta dl {
-      margin: 0;
-    }
-
-    .contact-meta dt {
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-
-    .contact-meta dd {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.7;
     }
 
     .contact-buttons {
@@ -398,8 +447,51 @@
       background: transparent;
     }
 
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.08);
+    .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+    .form-wrap {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .form-embed {
+      width: 100%;
+      min-height: 920px;
+      border: 0;
+      display: block;
+      background: #fff;
+    }
+
+    .form-note {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .check-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      flex: 0 0 10px;
+      margin-top: 10px;
     }
 
     footer {
@@ -434,17 +526,19 @@
       .message-grid,
       .company-grid,
       .contact-grid,
+      .gallery-grid,
+      .map-grid,
+      .form-grid,
       .services,
       .support-grid,
       .flow-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-mini-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .hero-mini-grid,
+      .gallery-thumbs { grid-template-columns: 1fr; }
       nav { display: none; }
+      .form-embed { min-height: 980px; }
     }
 
     @media (max-width: 640px) {
@@ -457,11 +551,16 @@
       .message-card,
       .company-card,
       .contact-card,
+      .gallery-card,
+      .map-card,
+      .form-card,
       .service-card,
       .support-card,
       .flow-card { padding: 24px; }
       .company-row { grid-template-columns: 1fr; gap: 6px; }
       .contact-meta dd { font-size: 16px; }
+      .map-embed { min-height: 300px; }
+      .form-embed { min-height: 1080px; }
     }
   </style>
 </head>
@@ -478,8 +577,9 @@
           <li><a href="#services">事業内容</a></li>
           <li><a href="#support">支援内容</a></li>
           <li><a href="#flow">ご利用の流れ</a></li>
-          <li><a href="#company">会社概要</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#gallery">施設紹介</a></li>
+          <li><a href="#access">アクセス</a></li>
+          <li><a href="#inquiry">見学・問い合わせ</a></li>
         </ul>
       </nav>
     </div>
@@ -496,8 +596,8 @@
             地域に寄り添う暮らしの支援を行っています。安心して過ごせる日常を大切にしながら、継続的なサポートを目指します。
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">お問い合わせ</a>
-            <a class="btn btn-secondary" href="#company">会社概要を見る</a>
+            <a class="btn btn-primary" href="#inquiry">見学・お問い合わせ</a>
+            <a class="btn btn-secondary" href="#gallery">施設紹介を見る</a>
           </div>
         </div>
 
@@ -626,6 +726,84 @@
       </div>
     </section>
 
+    <section id="gallery" class="section">
+      <div class="container gallery-grid">
+        <div>
+          <span class="eyebrow">GALLERY</span>
+          <h2 class="section-title">施設紹介</h2>
+          <p class="section-lead">
+            外観や室内の雰囲気が伝わる写真を掲載することで、見学前にも安心感を持っていただきやすくなります。
+            まずは仮の画像エリアを置いているので、写真が用意できたら差し替えるだけで見た目が大きく整います。
+          </p>
+          <div class="card gallery-card">
+            <h3>掲載するとよい写真</h3>
+            <div class="check-list">
+              <div class="check-item"><span class="check-dot"></span><span>建物の外観や玄関まわり</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>共用スペースやリビングの様子</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>居室の雰囲気がわかる室内写真</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>食事スペースやキッチンなど生活動線</span></div>
+            </div>
+            <div class="upload-note">
+              写真を入れるときは、このHTMLと同じ階層に <strong>images</strong> フォルダを作り、<br>
+              例：<strong>images/exterior.jpg</strong> のように置くと差し替えやすいです。
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-stack">
+          <div class="gallery-main">
+            <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1200&q=80" alt="施設外観イメージ" />
+            <div class="gallery-caption">外観イメージ（差し替え可能）</div>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="共用スペースイメージ" />
+              <div class="placeholder-label">共用スペース</div>
+            </div>
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80" alt="キッチンイメージ" />
+              <div class="placeholder-label">食事・キッチン</div>
+            </div>
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="居室イメージ" />
+              <div class="placeholder-label">居室</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="access" class="section alt-section">
+      <div class="container map-grid">
+        <div>
+          <span class="eyebrow">ACCESS</span>
+          <h2 class="section-title">アクセス</h2>
+          <p class="section-lead">
+            Googleマップを埋め込むことで、所在地が視覚的にわかりやすくなります。
+            見学時の案内もしやすく、スマートフォンからそのまま経路検索に進めます。
+          </p>
+          <div class="card map-card">
+            <h3>所在地</h3>
+            <p>東京都文京区本郷2丁目15-1</p>
+            <div class="check-list">
+              <div class="check-item"><span class="check-dot"></span><span>見学前に場所を把握しやすい</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>家族・支援機関の方へ共有しやすい</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>スマホから地図アプリへの遷移がスムーズ</span></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <iframe
+            class="map-embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%87%E4%BA%AC%E5%8C%BA%E6%9C%AC%E9%83%B72%E4%B8%81%E7%9B%AE15-1&z=16&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
     <section id="company" class="section">
       <div class="container company-grid">
         <div>
@@ -659,6 +837,39 @@
               <dd>グループホーム業、不動産賃貸業、コンテンツ販売業</dd>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inquiry" class="section alt-section">
+      <div class="container form-grid">
+        <div>
+          <span class="eyebrow">INQUIRY</span>
+          <h2 class="section-title">見学・問い合わせフォーム</h2>
+          <p class="section-lead">
+            見学予約やお問い合わせを受けるフォームを設置しておくと、電話やメール以外の導線も確保できます。
+            まずはGoogleフォームで十分です。作成後にフォームURLを入れるだけで、このページに埋め込めます。
+          </p>
+          <div class="card form-card">
+            <h3>おすすめの質問項目</h3>
+            <div class="check-list">
+              <div class="check-item"><span class="check-dot"></span><span>お名前</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>ご本人 / ご家族 / 支援機関</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>電話番号・メールアドレス</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>見学希望日</span></div>
+              <div class="check-item"><span class="check-dot"></span><span>ご相談内容</span></div>
+            </div>
+            <p class="form-note">
+              いまは仮の埋め込み表示です。Googleフォーム作成後、iframeのURL部分を差し替えれば公開できます。
+            </p>
+          </div>
+        </div>
+        <div class="form-wrap">
+          <iframe
+            class="form-embed"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYFORM/viewform?embedded=true">
+            読み込んでいます…
+          </iframe>
         </div>
       </div>
     </section>
@@ -706,6 +917,7 @@
       <div>© 2026 Koala Nest Life合同会社. All rights reserved.</div>
       <div class="footer-links">
         <a href="#company">会社概要</a>
+        <a href="#inquiry">見学・問い合わせ</a>
         <a href="#contact">お問い合わせ</a>
       </div>
     </div>
